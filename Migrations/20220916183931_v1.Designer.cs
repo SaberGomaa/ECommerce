@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(myDbContext))]
-    [Migration("20220915232106_v1")]
+    [Migration("20220916183931_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -122,7 +122,12 @@ namespace ECommerce.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("customer_id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("customer_id");
 
                     b.ToTable("contacts");
                 });
@@ -266,6 +271,17 @@ namespace ECommerce.Migrations
                 {
                     b.HasOne("ECommerce.Models.customer", "customer")
                         .WithMany("carts")
+                        .HasForeignKey("customer_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("customer");
+                });
+
+            modelBuilder.Entity("ECommerce.Models.contact", b =>
+                {
+                    b.HasOne("ECommerce.Models.customer", "customer")
+                        .WithMany()
                         .HasForeignKey("customer_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

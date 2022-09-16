@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿    using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Models
 {
@@ -16,7 +16,7 @@ namespace ECommerce.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlServer("Data source = SABER;Initial catalog = ECommerceProjrct;Integrated security = true");
+            optionsBuilder.UseSqlServer("Data source = SABER;Initial catalog = ECommerceProject;Integrated security = true");
             base.OnConfiguring(optionsBuilder);
         }
     }
