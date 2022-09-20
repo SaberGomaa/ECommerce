@@ -3,6 +3,8 @@ using ECommerce.ModelView;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Xml.Linq;
 
 namespace ECommerce.Controllers
@@ -62,6 +64,20 @@ namespace ECommerce.Controllers
         {
             var c = context.customers.Where(c => c.Id == id).FirstOrDefault();
             return View(c);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var c = context.customers.Find(id);
+            return View(c);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(customer c)
+        {
+            context.Entry(c).State = EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Details", "customer" , new {id = c.Id});
         }
     }
 }

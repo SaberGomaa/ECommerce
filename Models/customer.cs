@@ -8,7 +8,10 @@ namespace ECommerce.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage ="*")]
-        public string Name { get; set; }
+        public string FName { get; set; }
+
+        [Required(ErrorMessage = "*")]
+        public string LName { get; set; }
 
         [Required(ErrorMessage = "*")]
         [RegularExpression("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$", ErrorMessage ="Not Vaild Email")]

@@ -1,0 +1,70 @@
+﻿@model ECommerce.Models.customer
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h1 style="text-align:center">Profile Settings</h1>
+
+
+<hr />
+<form method="post" enctype="multipart/form-data">
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150" src="/attaches/@Model.Img">
+                <span class="font-weight-bold">@Model.FName @Model.LName</span>
+                <span class="text-black-50">@Model.Email</span><span> </span></div>
+        </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+             
+                    <div class="row mt-5">
+                        <div class="col-md-6"><label class="labels">Name</label>
+                            <input type="text" asp-for="@Model.FName" class="form-control" placeholder="first name" value="@Model.FName">
+                            <span asp-validation-for="@Model.FName" class="text-danger"></span>
+
+                            </div>
+                        <div class="col-md-6">
+                            <label class="labels">Last Name</label>
+                            <input type="text" asp-for="@Model.LName"  class="form-control" value="@Model.LName" placeholder="Last Name">
+                            <span asp-validation-for="@Model.LName" class="text-danger"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label class="labels">Mobile Number</label>
+                            <input type="text"  asp-for="@Model.Phone" class="form-control" placeholder="Enter phone number" value="@Model.Phone">
+                            <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Email</label>
+                            <input type="text"  asp-for="@Model.Email" class="form-control" placeholder="Enter Email" value="@Model.Email">
+                            <span asp-validation-for="@Model.Email" class="text-danger"></span>
+
+                        </div>
+                     <div class="col-md-12">
+                            <label class="labels">Address</label>
+                            <input type="text" class="form-control"  asp-for="@Model.Address"  placeholder="Enter Address" value="@Model.Address">
+                            <span asp-validation-for="@Model.Address" class="text-danger"></span>
+
+                        </div>
+                    <div class="mt-5 text-center">
+                            <input type="submit" class="btn btn-primary profile-button" value=" Save Changes"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+    <input hidden asp-for="Password" value="@Model.Password" />
+    <input hidden asp-for="Confirm_Password" value="@Model.Password" />
+    <input hidden asp-for="Img" value="@Model.Img" />
+
+    </form>

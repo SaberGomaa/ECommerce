@@ -21,7 +21,7 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="/attaches/@Model.Img" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>@Model.Name</h4>
+                      <h4>@Model.FName @Model.LName</h4>
                       <p class="text-secondary mb-1">@Model.Address</p>
                       <p class="text-muted font-size-sm">@Model.Phone</p>
                       @*
@@ -41,7 +41,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      @Model.Name
+                      @Model.FName  @Model.LName
                     </div>
                   </div>
                   <hr>
@@ -74,7 +74,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info">Edit</a>
+                          @Html.ActionLink("Edit","Edit", "customer", new {id = Model.Id} ,new {@class="btn btn-info"})
                     </div>
                   </div>
                 </div>
