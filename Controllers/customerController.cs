@@ -18,6 +18,7 @@ namespace ECommerce.Controllers
         }
 
         myDbContext context = new myDbContext();
+
         private readonly IWebHostEnvironment host;
 
         public IActionResult Register()
