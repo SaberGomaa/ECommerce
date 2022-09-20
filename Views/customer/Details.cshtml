@@ -74,7 +74,8 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                          @Html.ActionLink("Edit","Edit", "customer", new {id = Model.Id} ,new {@class="btn btn-info"})
+@*                          @Html.ActionLink("Edit","Edit", "customer", new {id = Model.Id} ,new {@class="btn btn-info"})
+*@                          <a asp-action="edit" asp-controller="customer" asp-route-id="@Model.Id" class="btn btn-info">Edit</a>
                     </div>
                   </div>
                 </div>

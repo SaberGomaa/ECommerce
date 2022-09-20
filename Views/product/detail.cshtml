@@ -1,0 +1,110 @@
+﻿@model ECommerce.Models.Product
+
+@{
+    ViewData["Title"] = "detail";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h1 style="text-align:center;">@Model.Name Details  </h1>
+<hr />
+
+<section class="single-product">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-4 col-md-offset-1 col-sm-6">
+            <img
+              src="/attaches/@Model.Img"
+              width="80%"
+              id="productImg"
+              alt=""
+            />
+            <div class="small-img-row">
+              <div class="small-img-col">
+                <img  src="/attaches/@Model.Img" class="small-img" alt="" />
+              </div>
+              <div class="small-img-col">
+                <img  src="/attaches/h1.jpg" class="small-img" alt="" />
+              </div>
+              <div class="small-img-col">
+                <img  src="/attaches/@Model.Img" class="small-img" alt="" />
+              </div>
+              <div class="small-img-col">
+                <img  src="/attaches/h1.jpg" class="small-img" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-md-offset-1 col-sm-6 mt-5">
+                <h2>@Model.Name</h2>
+            <h4>$ @Model.Price</h4>
+            <hr />
+
+            <div class="dropdown">
+              <button
+                class="btn-sm dropdown-toggle custom-btn"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Select Size
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">XXL</a>
+                <a class="dropdown-item" href="#">XL</a>
+                <a class="dropdown-item" href="#">Large</a>
+                <a class="dropdown-item" href="#">Medium</a>
+                <a class="dropdown-item" href="#">Small</a>
+              </div>
+            </div>
+            <input type="number" value="1" min="1" max="@Model.Quantity" class="border-info info"/>
+
+            <a href="#" class="custom-btn"
+              >Add to Cart</a
+            >
+            <hr />
+            <h4>Product Detail</h4>
+            <p>
+             @Model.Details
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+@section Scripts{
+    <script>
+            // ------ product detail page js------
+
+    var productImg = document.getElementById("productImg");
+    var smallImg = document.querySelectorAll(".small-img");
+
+    for (let i = 0; i < smallImg.length; i++) {
+      smallImg[i].addEventListener("click", () => {
+        productImg.src = smallImg[i].src;
+      });
+    }
+
+    // -------Account page js-------
+
+    var LoginForm = document.getElementById("LoginForm");
+    var RegForm = document.getElementById("RegForm");
+    var Indicator = document.getElementById("Indicator");
+
+    function register() {
+      RegForm.style.transform = "translateX(0px)";
+      LoginForm.style.transform = "translateX(0px)";
+      Indicator.style.transform = "translateX(100px)";
+    }
+
+    function login() {
+      RegForm.style.transform = "translateX(300px)";
+      LoginForm.style.transform = "translateX(300px)";
+      Indicator.style.transform = "translateX(0px)";
+    }
+
+    </script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+}

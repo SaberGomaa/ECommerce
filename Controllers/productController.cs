@@ -18,5 +18,10 @@ namespace ECommerce.Controllers
             return View(products);
         }
 
+        public IActionResult detail(int id)
+        {
+            return View(context.products.SingleOrDefault(p => p.Id == id));
+        }
+
     }
 }
