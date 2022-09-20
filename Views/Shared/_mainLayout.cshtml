@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 
 <html>
-    
+
 <head>
    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css " />
+    <link rel="stylesheet" href="/css/productCardSheet.css" asp-append-version="true" />
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ECommerce.styles.css" asp-append-version="true" />
 </head>
@@ -53,7 +55,7 @@
                   <a class="nav-link h5" href="#">Team</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link h5" href="#">Projects</a>
+                  <a class="nav-link h5" asp-action="show" asp-controller="product">Products</a>
                 </li>
                 <li class="nav-item nav-link "> 
                 </li>  
@@ -64,7 +66,7 @@
                   <a class="nav-link h5" asp-action="Register" asp-controller="customer">Register</a>
                 </li>
             </ul>
-              
+
               <!-- Left links -->
             </div>
             <!-- Collapsible wrapper -->
@@ -90,7 +92,7 @@
             <div class="d-flex align-items-center "  >
               <!-- Icon -->
               <a class="text-reset me-3" href="#">
-                
+
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -106,8 +108,8 @@
                     </svg>
                  </span>
                 </a>
-                
-                 
+
+
               </div>
               <!-- Avatar -->
 
@@ -148,9 +150,9 @@
             <!-- Right elements -->
           </div>
           <!-- Container wrapper -->
-       
 
-  
+
+
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="#">Action</a>
     <a class="dropdown-item" href="#">Another action</a>
@@ -164,7 +166,7 @@
         </main>
     </div>
     <div>
-        <footer class="text-center text-white fixed-bottom" style="background-color: #21081a;">
+       @* <footer class="text-center text-white fixed-bottom" style="background-color: #21081a;">
   <!-- Grid container -->
   <div class="container p-4"></div>
   <!-- Grid container -->
@@ -175,9 +177,9 @@
     <a class="text-white" href="#">ECommerce</a>
   </div>
   <!-- Copyright -->
-</footer>
+</footer>*@
     </div>
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
