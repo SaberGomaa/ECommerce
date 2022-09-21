@@ -17,7 +17,8 @@ namespace ECommerce.Controllers
         {
             int? customerId = HttpContext.Session.GetInt32("customerId");
 
-            List<Cart> c = context.carts.Where(e=>e.customer_id == customerId)
+            var c = context.carts.Where(e=>e.customer_id == customerId)
+                .Include(e=>e.customer)
                 .Include(e => e.Product).ToList();
                 
             return View(c);
