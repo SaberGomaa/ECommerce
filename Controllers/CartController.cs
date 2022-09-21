@@ -1,5 +1,6 @@
 ﻿using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Controllers
 {
@@ -14,7 +15,11 @@ namespace ECommerce.Controllers
 
         public IActionResult view(int customerId)
         {
-            return View(context.carts.Where(e=>e.customer_id == customerId).ToList());
+            var c = context.carts.AsSplitQuery()
+                .Include(e => e.customer)
+                .Include(e => e.Product).ToList();
+                
+            return View(c);
         }
 
         [HttpPost]
