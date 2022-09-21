@@ -9,24 +9,51 @@
 
 @{
     int? customerId = Context.Session.GetInt32("customerId");
+    double totalPrice = 0;
+    int Quantity = 0, counter = 1;
 }
 
 
-<table class="table table-info table-bordered">
-    <tr >
+
+<table class="table table-info table-bordered text-center table-striped">
+    <tr class="table-active">
+        <th>sequence</th>
         <th>Product Name</th>
         <th>Price</th>
         <th>size</th>
         <th>Quantity</th>
+        <th>Category</th>
+        <th>Delete</th>
+
     </tr>
     @foreach (var item in Model)
     {
+        totalPrice += item.Product.Price;
+        Quantity += item.Quantity;
         <tr>
+            <td>@counter</td>
             <td> @item.Product.Name</td>
             <td> @item.Product.Price</td>
             <td> @item.Product.Size</td>
             <td> @item.Quantity</td>
+            <td> @item.Product.Category</td>
+            <td><a  class="btn-danger btn text-white" asp-action="delete" asp-controller="cart" asp-route-id="@item.Id">Delete</a></td>
+
         </tr>
+        counter++;
+    }
+    @if (Quantity != 0)
+    {
+        <tr class="table-dark"> 
+            <td>More Info</td>
+        <td>Total Price</td>
+        <td>@totalPrice</td>
+        <td>Quantity</td>
+        <td>@Quantity</td>
+        <td></td>
+        <td></td>
+
+    </tr>
     }
 </table>
 

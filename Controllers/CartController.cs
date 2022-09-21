@@ -31,7 +31,8 @@ namespace ECommerce.Controllers
 
         public IActionResult add(int productId)
         {
-            List<Cart> carts = context.carts.ToList();
+            List<Cart> carts = context.carts
+                .Include(p=>p.Product).ToList();
 
             int? customerId = HttpContext.Session.GetInt32("customerId");
 
@@ -49,7 +50,7 @@ namespace ECommerce.Controllers
                 bool found = false;
                 foreach(var cart in carts)
                 {
-                    if (cart.product_id == productId)
+                    if (cart.Product.Id==productId)
                     {
                         found = true;
                         break;
@@ -63,6 +64,15 @@ namespace ECommerce.Controllers
                 }
                 return RedirectToAction("view", "Cart");
             }
+
+        }
+
+        public IActionResult delete(int id)
+        {
+            //var c = context.carts.Where(e => e.Id == id).FirstOrDefault();
+            context.carts.Remove(context.carts.Find(id));
+            context.SaveChanges();
+            return RedirectToAction("view");
         }
     }
 }
