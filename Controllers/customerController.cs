@@ -53,7 +53,8 @@ namespace ECommerce.Controllers
             if (c != null)
             {
                 HttpContext.Session.SetInt32("customerId" , c.Id);
-                
+                HttpContext.Session.SetString("customerName" , c.FName);
+
                 return RedirectToAction("show" , "product" );
             }
             else
