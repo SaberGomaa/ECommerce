@@ -7,14 +7,15 @@ namespace ECommerce.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public double Price { get; set; }
-        public string Img { get; set; }
-        public string Color { get; set; }
-        public string Size { get; set; }
+        [Required(ErrorMessage = "*")]
+        public int Quantity { get; set; }
 
-
+        ///
         public int customer_id { get; set; }
+        public int product_id { get; set; }
+
+        [ForeignKey("product_id")]
+        public Product Product { get; set; }
 
         [ForeignKey("customer_id")]
         public customer customer { get; set; }

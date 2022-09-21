@@ -4,6 +4,7 @@ using ECommerce.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(myDbContext))]
-    partial class myDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220921110237_v3")]
+    partial class v3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,17 +56,7 @@ namespace ECommerce.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("customer_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("product_id")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("customer_id");
-
-                    b.HasIndex("product_id");
 
                     b.ToTable("admins");
                 });
@@ -77,8 +69,24 @@ namespace ECommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("customer_id")
                         .HasColumnType("int");
@@ -268,25 +276,6 @@ namespace ECommerce.Migrations
                     b.ToTable("products");
                 });
 
-            modelBuilder.Entity("ECommerce.Models.admin", b =>
-                {
-                    b.HasOne("ECommerce.Models.customer", "customer")
-                        .WithMany("admins")
-                        .HasForeignKey("customer_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ECommerce.Models.Product", "Product")
-                        .WithMany("admins")
-                        .HasForeignKey("product_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("customer");
-                });
-
             modelBuilder.Entity("ECommerce.Models.Cart", b =>
                 {
                     b.HasOne("ECommerce.Models.customer", "customer")
@@ -296,7 +285,7 @@ namespace ECommerce.Migrations
                         .IsRequired();
 
                     b.HasOne("ECommerce.Models.Product", "Product")
-                        .WithMany("carts")
+                        .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -349,8 +338,6 @@ namespace ECommerce.Migrations
 
             modelBuilder.Entity("ECommerce.Models.customer", b =>
                 {
-                    b.Navigation("admins");
-
                     b.Navigation("carts");
 
                     b.Navigation("orders");
@@ -363,10 +350,6 @@ namespace ECommerce.Migrations
 
             modelBuilder.Entity("ECommerce.Models.Product", b =>
                 {
-                    b.Navigation("admins");
-
-                    b.Navigation("carts");
-
                     b.Navigation("order_Details");
                 });
 #pragma warning restore 612, 618

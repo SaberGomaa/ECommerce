@@ -39,6 +39,8 @@ namespace ECommerce.Models
 
         public ICollection<orderTable> orders { get; set; }
         public ICollection<Cart> carts { get; set; }
+        public ICollection<admin> admins { get; set; }
+
 
 
     }
