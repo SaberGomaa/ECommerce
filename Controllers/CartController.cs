@@ -13,10 +13,11 @@ namespace ECommerce.Controllers
             return View();
         }
 
-        public IActionResult view(int customerId)
+        public IActionResult view()
         {
-            var c = context.carts.AsSplitQuery()
-                .Include(e => e.customer)
+            int? customerId = HttpContext.Session.GetInt32("customerId");
+
+            List<Cart> c = context.carts.Where(e=>e.customer_id == customerId)
                 .Include(e => e.Product).ToList();
                 
             return View(c);
