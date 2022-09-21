@@ -31,10 +31,10 @@ namespace ECommerce.Controllers
 
         public IActionResult add(int productId)
         {
-            List<Cart> carts = context.carts
-                .Include(p => p.Product).ToList();
-
+            
             int? customerId = HttpContext.Session.GetInt32("customerId");
+            List<Cart> carts = context.carts.Where(e => e.customer.Id == customerId)
+                .Include(p => p.Product).ToList();
 
             if (customerId == null)
             {
