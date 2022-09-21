@@ -97,5 +97,10 @@ namespace ECommerce.Controllers
             context.SaveChanges();
             return RedirectToAction("Details", "customer");
         }
+        public IActionResult logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("login");
+        }
     }
 }

@@ -7,6 +7,10 @@
 <h1 style="text-align:center;">Cart View</h1>
 <hr />
 
+@{
+    int? customerId = Context.Session.GetInt32("customerId");
+}
+
 
 <table class="table table-info table-bordered">
     <tr >

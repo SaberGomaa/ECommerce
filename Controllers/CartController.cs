@@ -17,6 +17,11 @@ namespace ECommerce.Controllers
         {
             int? customerId = HttpContext.Session.GetInt32("customerId");
 
+            if(customerId == null)
+            {
+                return RedirectToAction("login", "customer");
+            }
+
             var c = context.carts.Where(e=>e.customer_id == customerId)
                 .Include(e=>e.customer)
                 .Include(e => e.Product).ToList();
