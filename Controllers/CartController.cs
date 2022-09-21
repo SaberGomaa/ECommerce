@@ -17,22 +17,22 @@ namespace ECommerce.Controllers
         {
             int? customerId = HttpContext.Session.GetInt32("customerId");
 
-            if(customerId == null)
+            if (customerId == null)
             {
                 return RedirectToAction("login", "customer");
             }
 
-            var c = context.carts.Where(e=>e.customer_id == customerId)
-                .Include(e=>e.customer)
+            var c = context.carts.Where(e => e.customer_id == customerId)
+                .Include(e => e.customer)
                 .Include(e => e.Product).ToList();
-                
+
             return View(c);
         }
 
         public IActionResult add(int productId)
         {
             List<Cart> carts = context.carts
-                .Include(p=>p.Product).ToList();
+                .Include(p => p.Product).ToList();
 
             int? customerId = HttpContext.Session.GetInt32("customerId");
 
@@ -42,15 +42,15 @@ namespace ECommerce.Controllers
             }
             else
             {
-                Cart c = new Cart();
-                c.customer_id = (int)customerId ;
-                c.product_id = productId ;
+                var c = new Cart();
+                c.customer_id = (int)customerId;
+                c.product_id = productId;
                 c.Quantity = 1;
 
                 bool found = false;
-                foreach(var cart in carts)
+                foreach (var cart in carts)
                 {
-                    if (cart.Product.Id==productId)
+                    if (cart.Product.Id == productId)
                     {
                         found = true;
                         break;
@@ -64,15 +64,15 @@ namespace ECommerce.Controllers
                 }
                 return RedirectToAction("view", "Cart");
             }
-
         }
-
         public IActionResult delete(int id)
         {
-            //var c = context.carts.Where(e => e.Id == id).FirstOrDefault();
-            context.carts.Remove(context.carts.Find(id));
-            context.SaveChanges();
-            return RedirectToAction("view");
+            if (id != null)
+            {
+                context.carts.Remove(context.carts.Find(id));
+                context.SaveChanges();
+            }
+                return RedirectToAction("view");
         }
     }
 }
