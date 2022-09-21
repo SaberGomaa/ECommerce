@@ -1,5 +1,6 @@
 ﻿@model List<ECommerce.Models.Product>
 
+
 @{
     ViewData["Title"] = "show";
     Layout = "~/Views/Shared/_mainLayout.cshtml";
@@ -9,9 +10,12 @@
 <h1 style="text-align:center;">Products</h1>
 
 <hr/>
+@if (ViewBag.isAdmin == true)
+{
+    <a asp-action="create" asp-controller="product" class="btn btn-info">Add Product</a>
+    <hr />
 
-<a asp-action="create" asp-controller="product" class="btn btn-info">Add Product</a>
-<hr />
+}
 
 <section style="background-color: #eee;">
     <div class="text-center container py-5">
@@ -48,6 +52,12 @@
                         <a class="btn btn-info " asp-action="add" asp-controller="cart" asp-route-productId="@i.Id" style="margin-right:20px;">Add to Cart</a>
                         <a class="btn btn-dark" asp-action="order" asp-controller="cart" >Buy Now!</a>
                     </div>
+                        <div class="mt-3 text-white">
+                            @if(ViewBag.isAdmin == true){
+                                <a class="btn btn-warning text-black" asp-action="edit" asp-controller="product" asp-route-productId="@i.Id"  style="margin-right:20px;">Edit</a>
+                                <a class="btn btn-danger text-black" asp-action="delete" asp-controller="product" asp-route-productId="@i.Id"  style="margin-right:20px;">Delete</a>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

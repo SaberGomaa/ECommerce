@@ -1,4 +1,5 @@
 ﻿using ECommerce.Models;
+using ECommerce.ModelView;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 
@@ -24,7 +25,7 @@ namespace ECommerce.Controllers
         public IActionResult show()
         {
             List<Product> products = context.products.OrderBy(e=>e.Price).ToList();
-
+            ViewBag.isAdmin = Login.isAdmin;
             return View(products);
         }
 
@@ -54,6 +55,20 @@ namespace ECommerce.Controllers
             context.products.Add(p);
             context.SaveChanges();
             return RedirectToAction("show", "product");
+        }
+
+        public IActionResult delete(int productId)
+        {
+            if (productId != null)
+            {
+                var product = context.products.Find(productId);
+                if (product != null)
+                {
+                    context.products.Remove(product);
+                    context.SaveChanges();
+                }
+            }
+            return RedirectToAction("show");
         }
 
     }
