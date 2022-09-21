@@ -45,8 +45,8 @@
                     </a>
                     <h6 class="mb-3">$@i.Price</h6>
                     <div>
-                        <a class="btn btn-info " asp-action="detail" asp-controller="product" asp-route-id="@i.Id" style="margin-right:20px;">Add to Cart</a>
-                        <a class="btn btn-dark" asp-action="detail" asp-controller="product" asp-route-id="@i.Id">Buy Now!</a>
+                        <a class="btn btn-info " asp-action="add" asp-controller="cart" asp-route-productId="@i.Id" style="margin-right:20px;">Add to Cart</a>
+                        <a class="btn btn-dark" asp-action="order" asp-controller="cart" >Buy Now!</a>
                     </div>
                     </div>
                 </div>

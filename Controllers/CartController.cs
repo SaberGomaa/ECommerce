@@ -29,13 +29,40 @@ namespace ECommerce.Controllers
             return View(c);
         }
 
-        [HttpPost]
-        public IActionResult add(int customerId , int productId)
+        public IActionResult add(int productId)
         {
-            var p = context.products.Find(productId);
+            List<Cart> carts = context.carts.ToList();
 
-            return RedirectToAction("view" , "Cart" , new {customerId = customerId});
+            int? customerId = HttpContext.Session.GetInt32("customerId");
+
+            if (customerId == null)
+            {
+                return RedirectToAction("login", "customer");
+            }
+            else
+            {
+                Cart c = new Cart();
+                c.customer_id = (int)customerId ;
+                c.product_id = productId ;
+                c.Quantity = 1;
+
+                bool found = false;
+                foreach(var cart in carts)
+                {
+                    if (cart.product_id == productId)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found == false)
+                {
+                    context.carts.Add(c);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("view", "Cart");
+            }
         }
-
     }
 }
