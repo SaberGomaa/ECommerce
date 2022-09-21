@@ -11,7 +11,6 @@ namespace ECommerce.Controllers
 {
     public class customerController : Controller
     {
-
         public customerController(IWebHostEnvironment host)
         {
             this.host = host;
@@ -53,7 +52,9 @@ namespace ECommerce.Controllers
             customer c = context.customers.Where(c => c.Email == login.Email && c.Password == login.Password).FirstOrDefault();
             if (c != null)
             {
-                return RedirectToAction("Details" ,new {id = c.Id});
+                HttpContext.Session.SetInt32("customerId" , c.Id);
+                
+                return RedirectToAction("Details");
             }
             else
             {
@@ -61,16 +62,32 @@ namespace ECommerce.Controllers
                 return View();
             }
         }
-        public IActionResult Details(int id) 
+        public IActionResult Details()
         {
-            var c = context.customers.Where(c => c.Id == id).FirstOrDefault();
-            return View(c);
+            int? id = HttpContext.Session.GetInt32("customerId");
+            if (id == null)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                var c = context.customers.Where(c => c.Id == id).FirstOrDefault();
+                return View(c);
+            }
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit()
         {
-            var c = context.customers.Find(id);
-            return View(c);
+            int? id = HttpContext.Session.GetInt32("customerId");
+            if (id == null)
+            {
+                return RedirectToAction("login");
+            }
+            else
+            {
+                var c = context.customers.Find(id);
+                return View(c);
+            }
         }
 
         [HttpPost]
@@ -78,7 +95,7 @@ namespace ECommerce.Controllers
         {
             context.Entry(c).State = EntityState.Modified;
             context.SaveChanges();
-            return RedirectToAction("Details", "customer" , new {id = c.Id});
+            return RedirectToAction("Details", "customer");
         }
     }
 }

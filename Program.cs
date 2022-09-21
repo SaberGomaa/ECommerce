@@ -8,8 +8,18 @@ namespace ECommerce
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDistributedMemoryCache();
+
+            builder.Services.AddSession();
+
+            //builder.Services.AddSession(option =>
+            //{
+            //    option.IdleTimeout = TimeSpan.FromMinutes(10);
+            //});
 
             var app = builder.Build();
+
+            app.UseSession();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -19,6 +29,7 @@ namespace ECommerce
             app.UseStaticFiles();
 
             app.UseRouting();
+
 
             app.UseAuthorization();
 
