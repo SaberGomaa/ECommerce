@@ -12,11 +12,19 @@ namespace ECommerce.Controllers
         }
         public IActionResult contact()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("customerId") != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("login", "customer"); 
+            }
         }
         [HttpPost]
         public IActionResult contact(contact c)
         {
+            
             if (c != null && HttpContext.Session.GetInt32("customerId") !=null)
             {
                 c.customer_id = (int)HttpContext.Session.GetInt32("customerId");
@@ -26,5 +34,11 @@ namespace ECommerce.Controllers
             }
             return RedirectToAction("show", "product");
         }
+        
+        public IActionResult about()
+        {
+            return View();
+        }
+
     }
 }

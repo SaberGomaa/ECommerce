@@ -1,56 +1,77 @@
 ﻿@model ECommerce.Models.contact
 @{
     ViewData["Title"] = "contact";
-    Layout = "~/Views/Shared/_mainLayout.cshtml";
 }
 
 <h1 class="text-center"> Contact Us</h1>
 <hr />
-<div class="row shadow-lg p-3 mb-5 rounded justify-content-center" style="background-color:#393939 ;">
-<!-- Default form contact -->
-<div class="col-5 p-5">
 
-<form class="text-center shadow-lg p-3 mb-5 rounded p-5 text-white " method="post">
-
-    <p class="h4 mb-4 text-white">Contact us</p>
-    <div>
-    <!-- Name -->
-    <input asp-for="Name" type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
-    <span asp-validation-for="Message" class="text-danger"></span>
+<div class="container-fluid bg-grey p-5 shadow-lg p-3 mb-5 rounded">
+  <div class="row m-5">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p>
+          <span >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+              </svg>
+          </span> 
+            MNF EGYPT
+        </p>
+         <p>
+          <span >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone-fill" viewBox="0 0 16 16">
+              <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+            </svg>
+          </span> 
+            +201095575989
+        </p>
+         <p>
+          <span >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+              <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+            </svg>
+          </span> 
+            SaberGomaa@hotmail.com
+        </p>
     </div>
-    <!-- Email -->
-    <div>
-    <input asp-for="Email" type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
-    <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <!-- Subject -->
-    <label>Subject</label>
-    <select asp-for="choose" class="browser-default custom-select mb-4 form-control">
-        <option value="" disabled>Choose option</option>
-        <option value="1" selected>Feedback</option>
-        <option value="2">Report a bug</option>
-        <option value="3">Feature request</option>
-        <option value="4">Feature request</option>
-    </select>
+    <form method="post" class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input asp-for="Name" class="form-control" placeholder="Name" type="text">
+            <span asp-validation-for="Name" class="text-danger"></span>
 
-    <!-- Message -->
-    <div class="form-group">
-        
-        <textarea asp-for="Message" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
-        <span asp-validation-for="Message" class="text-danger"></span>
-    </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input asp-for="Email" class="form-control"  placeholder="Email" >
+           <span asp-validation-for="Email" class="text-danger"></span>
 
-    <!-- Copy -->
-    <div class="custom-control custom-checkbox mb-4">
-        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
-        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
-    </div>
+      </div>
+      </div>
+      <div class="mt-5">
+          <label>Choose problem</label>
+          <select asp-for="choose" class="browser-default custom-select mb-4 form-control">
+                <option value="" disabled>Choose option</option>
+                <option value="1" selected>Feedback</option>
+                <option value="2">Report a bug</option>
+                <option value="3">Feature request</option>
+                <option value="4">other</option>
 
-    <!-- Send button -->
-    <input class="btn btn-info btn-block" type="submit" value="Send"/>
-
-</form>
+            </select>
+      </div>
+      <textarea asp-for="Message" class="mt-5 form-control" placeholder="Comment" rows="5"></textarea><br>
+      <span asp-validation-for="Message" class="text-danger"></span>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <input class="btn btn-default pull-right btn btn-dark" type="submit" value="Send"/>
+      </div>
+      </div>
+    </form>
+  </div>
 </div>
-</div>
 
-<!-- Default form contact -->
+@section Scripts{
+         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+}
