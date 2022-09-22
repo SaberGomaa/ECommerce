@@ -1,0 +1,56 @@
+﻿@model ECommerce.Models.contact
+@{
+    ViewData["Title"] = "contact";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h1 class="text-center"> Contact Us</h1>
+<hr />
+<div class="row shadow-lg p-3 mb-5 rounded justify-content-center" style="background-color:#393939 ;">
+<!-- Default form contact -->
+<div class="col-5 p-5">
+
+<form class="text-center shadow-lg p-3 mb-5 rounded p-5 text-white " method="post">
+
+    <p class="h4 mb-4 text-white">Contact us</p>
+    <div>
+    <!-- Name -->
+    <input asp-for="Name" type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
+    <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+    <!-- Email -->
+    <div>
+    <input asp-for="Email" type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+    <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <!-- Subject -->
+    <label>Subject</label>
+    <select asp-for="choose" class="browser-default custom-select mb-4 form-control">
+        <option value="" disabled>Choose option</option>
+        <option value="1" selected>Feedback</option>
+        <option value="2">Report a bug</option>
+        <option value="3">Feature request</option>
+        <option value="4">Feature request</option>
+    </select>
+
+    <!-- Message -->
+    <div class="form-group">
+        
+        <textarea asp-for="Message" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+
+    <!-- Copy -->
+    <div class="custom-control custom-checkbox mb-4">
+        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
+    </div>
+
+    <!-- Send button -->
+    <input class="btn btn-info btn-block" type="submit" value="Send"/>
+
+</form>
+</div>
+</div>
+
+<!-- Default form contact -->

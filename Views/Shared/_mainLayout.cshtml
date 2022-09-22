@@ -53,6 +53,10 @@
                 <li class="nav-item">
                   <a class="nav-link h5" asp-action="show" asp-controller="product">Products</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link h5" asp-action="about" asp-controller="contact">About Us</a>
+                </li>
+                
                 <li class="nav-item nav-link "> 
                 </li>  
                 @if (customerId == null)
@@ -63,6 +67,10 @@
                 <li class="nav-item">
                     <a class="nav-link h5" asp-action="Register" asp-controller="customer">Register</a>
                 </li>
+                    }else{
+                        <li class="nav-item">
+                            <a class="nav-link h5" asp-action="contact" asp-controller="contact">Contact Us</a>
+                        </li>
                     }
             </ul>
 
