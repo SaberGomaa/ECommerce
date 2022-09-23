@@ -12,6 +12,7 @@ namespace ECommerce.Models
         [Required(ErrorMessage = "*")]
 
         public string Message { get; set; }
+        
         [Required(ErrorMessage = "*")]
         [RegularExpression("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$", ErrorMessage = "Not Vaild Email")]
         public string Email { get; set; }

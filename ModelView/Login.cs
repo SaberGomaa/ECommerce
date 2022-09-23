@@ -10,7 +10,7 @@ namespace ECommerce.ModelView
         public string  Email { get; set; }
         
         [Required(ErrorMessage = "*")]
-        public static bool isAdmin { get; set; } = false;
+        public static bool isAdmin { get; set; } = true;
         public string Password { get; set; }
     }
 }

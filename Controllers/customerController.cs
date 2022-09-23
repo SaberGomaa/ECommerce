@@ -29,7 +29,10 @@ namespace ECommerce.Controllers
         public IActionResult Register(customer c , IFormFile photo )
         {
             string fileName = "";
-            if(photo != null)
+
+            var f = context.customers.Where(c => c.Img == photo.FileName).FirstOrDefault(); 
+
+            if(photo != null && f == null)
             {
                 string attach = Path.Combine(host.WebRootPath, "attaches");
                 fileName = photo.FileName;
