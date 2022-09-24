@@ -2,6 +2,8 @@
 @{
     Layout = null;
     int? customerId = Context.Session.GetInt32("customerId");
+    int? isAdmin = Context.Session.GetInt32("isAdmin");
+
     string? customerName = Context.Session.GetString("customerName");
 
 }
@@ -58,7 +60,13 @@
                 </li>
                 
                 <li class="nav-item nav-link "> 
-                </li>  
+                </li> 
+                @if (isAdmin == 1)
+                {
+                    <li class="nav-item">
+                            <a class="nav-link h5" asp-action="show_problem" asp-controller="customer">Customers Problem</a>
+                    </li>
+                }
                 @if (customerId == null)
                 {
                 <li class="nav-item">

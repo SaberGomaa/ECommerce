@@ -25,7 +25,12 @@ namespace ECommerce.Controllers
         public IActionResult show()
         {
             List<Product> products = context.products.OrderBy(e=>e.Price).ToList();
-            ViewBag.isAdmin = Login.isAdmin;
+
+            bool isAdmin = false;
+
+            if (HttpContext.Session.GetInt32("customerId") == 1) isAdmin = true;
+
+            ViewBag.isAdmin = isAdmin;
             return View(products);
         }
 
@@ -50,14 +55,15 @@ namespace ECommerce.Controllers
                 string fullPath = Path.Combine(attach, fileName);
                 photo.CopyTo(new FileStream(fullPath, FileMode.Create));
             }
-            p.Img = photo.FileName;
+            if(photo != null)
+                p.Img = photo.FileName;
 
             context.products.Add(p);
             context.SaveChanges();
             return RedirectToAction("show", "product");
         }
 
-        public IActionResult delete(int productId)
+        public IActionResult delete(int? productId)
         {
             if (productId != null)
             {

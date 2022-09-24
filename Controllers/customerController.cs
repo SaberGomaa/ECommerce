@@ -39,7 +39,8 @@ namespace ECommerce.Controllers
                 string fullPath = Path.Combine(attach, fileName);
                 photo.CopyTo(new FileStream(fullPath, FileMode.Create));
             }
-            c.Img = photo.FileName;
+            if(photo != null) c.Img = photo.FileName;
+            
             context.customers.Add(c);
             context.SaveChanges();
             return RedirectToAction("Login");
@@ -52,11 +53,17 @@ namespace ECommerce.Controllers
         [HttpPost]
         public IActionResult Login(Login login)
         {
-            customer c = context.customers.Where(c => c.Email == login.Email && c.Password == login.Password).FirstOrDefault();
+            var c = context.customers.Where(c => c.Email == login.Email && c.Password == login.Password).FirstOrDefault();
+
+            int isAdmin = 0;
+            if (c.Id == 1) isAdmin = 1;
+
             if (c != null)
             {
                 HttpContext.Session.SetInt32("customerId" , c.Id);
                 HttpContext.Session.SetString("customerName" , c.FName);
+                HttpContext.Session.SetInt32("isAdmin" , isAdmin);
+
 
                 return RedirectToAction("show" , "product" );
             }
@@ -106,5 +113,8 @@ namespace ECommerce.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("login");
         }
+
+      
+
     }
 }
