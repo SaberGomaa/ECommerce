@@ -114,7 +114,19 @@ namespace ECommerce.Controllers
             return RedirectToAction("login");
         }
 
-      
+        public IActionResult show_problem()
+        {
+            if (HttpContext.Session.GetInt32("isAdmin") == 1)
+            {
+                List<contact> contacts = context.contacts.Include(c => c.customer).ToList();
+
+                return View(contacts);
+            }
+            else
+            {
+                return RedirectToAction("login");
+            }
+        }
 
     }
 }

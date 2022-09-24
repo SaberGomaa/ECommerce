@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ECommerce.Models.contact>
+
+@{
+    ViewData["Title"] = "show_problem";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+    int counter = 1;
+}
+
+<h1 class="text-center">Customer Problem</h1>
+<hr/>
+
+<table class="table table-info table-bordered text-center table-striped">
+    <tr class="table-active">
+        <th>sequence</th>
+        <th>Problem ID</th>
+        <th>Customer Id</th>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th>Massage</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+            <tr>
+                <td>@counter</td>
+                <td> @item.Id</td>
+                <td> @item.customer.Id</td>
+                <td> @item.Name</td>
+                <td> @item.Email</td>
+                <td> @item.Message</td>
+            </tr>
+        counter++;
+    }
+   
+    
+</table>
