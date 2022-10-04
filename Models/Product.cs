@@ -23,7 +23,7 @@ namespace ECommerce.Models
 
         public string Category { get; set; }
 
-        public ICollection<order_Details> order_Details { get; set; }
+        public ICollection<Order> orders { get; set; }
         public ICollection<Cart> carts { get; set; }
         public ICollection<admin> admins { get; set; }
 

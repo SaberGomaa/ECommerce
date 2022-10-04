@@ -37,7 +37,7 @@ namespace ECommerce.Models
         [RegularExpression("^01[0125][0-9]{8}$",ErrorMessage ="Not Vaild Number")]
         public string Phone { get; set; }
 
-        public ICollection<orderTable> orders { get; set; }
+        public ICollection<Order> orders { get; set; }
         public ICollection<Cart> carts { get; set; }
         public ICollection<admin> admins { get; set; }
 
