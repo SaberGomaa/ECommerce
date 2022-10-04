@@ -6,8 +6,7 @@ namespace ECommerce.Models
     {
         public DbSet<customer> customers { get; set; }
         public DbSet<admin> admins { get; set; }
-        public DbSet<orderTable> orderTables { get; set; }
-        public DbSet<order_Details> order_Details { get; set; }
+        public DbSet<Order> orders { get; set; }
         public DbSet<Cart> carts { get; set; }
         public DbSet<Product> products { get; set; }
         public DbSet<contact> contacts { get; set; }
