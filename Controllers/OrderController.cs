@@ -10,7 +10,7 @@ namespace ECommerce.Controllers
             return View();
         }
 
-        public IActionResult view()
+        public IActionResult viewOrder()
         {
             return View();
         }
