@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ECommerce.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Controllers
 {
@@ -12,6 +13,12 @@ namespace ECommerce.Controllers
         public IActionResult OrderDetail()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult OrderDetail(Order order)
+        {
+            return RedirectToAction("view", "order");
         }
 
     }
