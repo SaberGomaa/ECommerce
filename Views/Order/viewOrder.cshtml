@@ -1,4 +1,7 @@
-﻿
+﻿@using ECommerce.Models
+
+@model List<Order>
+
 @{
     ViewData["Title"] = "viewOrder";
     Layout = "~/Views/Shared/_mainLayout.cshtml";
@@ -6,4 +9,12 @@
 <hr />
 <h1 class="text-center">All Orders</h1>
 <hr />
-0
+
+@{
+    int id = (int)Context.Session.GetInt32("customerId") ;
+}
+
+<table class="table table-info table-bordered text-center table-striped">
+   
+</table>
+
