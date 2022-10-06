@@ -1,5 +1,6 @@
 ﻿using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Controllers
 {
@@ -13,7 +14,7 @@ namespace ECommerce.Controllers
 
         public IActionResult viewOrder()
         {
-            var orders = context.orders.ToList();
+            var orders = context.orders.AsSplitQuery().Include(c=>c.product).ToList();
 
             return View(orders);
         }
