@@ -14,9 +14,17 @@ namespace ECommerce.Controllers
 
         public IActionResult viewOrder()
         {
-            var orders = context.orders.AsSplitQuery().Include(c=>c.product).ToList();
+            int? id = HttpContext.Session.GetInt32("customerId");
 
-            return View(orders);
+            if (id != null)
+            {
+                var orders = context.orders.AsSplitQuery().Include(c => c.product).ToList();
+                return View(orders);
+            }
+            else
+            {
+                return RedirectToAction("login", "customer");
+            }
         }
 
         public IActionResult OrderDetail()
