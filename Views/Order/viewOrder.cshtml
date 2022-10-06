@@ -11,7 +11,7 @@
 <hr />
 
 @{
-    int? id = Context.Session.GetInt32("customerId") , counter = 1 ;
+    int? id = Context.Session.GetInt32("customerId") , counter = 0 ;
 }
 
 <table class="table table-info table-bordered text-center table-striped">
@@ -26,8 +26,9 @@
 
    </tr>
    @foreach(var i in Model){
-       <tr>
-           <td>counter</td>
+
+        <tr>
+            <td>@{++counter;}@counter</td>
            <td>@i.Id</td>
            <td>@i.product.Name</td>
            <td>@i.product.Price</td>
@@ -38,4 +39,3 @@
    }
 
 </table>
-
