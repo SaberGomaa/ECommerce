@@ -20,10 +20,22 @@
        <th>Order Id</th>
        <th>Product Name</th>
        <th>Product Price</th>
-       <th>Sub Price </th>
+       <th>Sub Total </th>
        <th>Quantity </th>
        <th>Total Price </th>
 
    </tr>
+   @foreach(var i in Model){
+       <tr>
+           <td>counter</td>
+           <td>@i.Id</td>
+           <td>@i.product.Name</td>
+           <td>@i.product.Price</td>
+           <td>@i.subTotal</td>
+           <td>@i.product_Quantity</td>
+           <td>@i.order_total</td>
+       </tr>
+   }
+
 </table>
 
