@@ -12,10 +12,11 @@
 
 @{
     int? id = Context.Session.GetInt32("customerId") , counter = 0 ;
+    long totalPrice = 0;
 }
 
-<table class="table table-info table-bordered text-center table-striped">
-   <tr>
+<table class="table table-info table-bordered text-center">
+   <tr class="table-dark">
        <th>Sequance</th>
        <th>Order Id</th>
        <th>Product Name</th>
@@ -26,7 +27,6 @@
 
    </tr>
    @foreach(var i in Model){
-
         <tr>
             <td>@{++counter;}@counter</td>
            <td>@i.Id</td>
@@ -34,7 +34,7 @@
            <td>@i.product.Price</td>
            <td>@i.subTotal</td>
            <td>@i.product_Quantity</td>
-           <td>@i.order_total</td>
+           <td class="table-dark">@i.order_total</td>
        </tr>
    }
 
