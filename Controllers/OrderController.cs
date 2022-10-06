@@ -5,6 +5,7 @@ namespace ECommerce.Controllers
 {
     public class OrderController : Controller
     {
+        public myDbContext context = new myDbContext();
         public IActionResult Index()
         {
             return View();
@@ -12,7 +13,9 @@ namespace ECommerce.Controllers
 
         public IActionResult viewOrder()
         {
-            return View();
+            var orders = context.orders.ToList();
+
+            return View(orders);
         }
 
         public IActionResult OrderDetail()
