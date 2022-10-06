@@ -11,10 +11,19 @@
 <hr />
 
 @{
-    int id = (int)Context.Session.GetInt32("customerId") ;
+    int? id = Context.Session.GetInt32("customerId") , counter = 1 ;
 }
 
 <table class="table table-info table-bordered text-center table-striped">
-   
+   <tr>
+       <th>Sequance</th>
+       <th>Order Id</th>
+       <th>Product Name</th>
+       <th>Product Price</th>
+       <th>Sub Price </th>
+       <th>Quantity </th>
+       <th>Total Price </th>
+
+   </tr>
 </table>
 
