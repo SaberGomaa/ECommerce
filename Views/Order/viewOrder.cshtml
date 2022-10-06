@@ -27,15 +27,25 @@
 
    </tr>
    @foreach(var i in Model){
+        totalPrice += (long)i.order_total;  
         <tr>
-            <td>@{++counter;}@counter</td>
+           <td>@{++counter;}@counter</td>
            <td>@i.Id</td>
            <td>@i.product.Name</td>
            <td>@i.product.Price</td>
            <td>@i.subTotal</td>
-           <td>@i.product_Quantity</td>
+           <td>@i.Quantity</td>
            <td class="table-dark">@i.order_total</td>
        </tr>
    }
+   <tr>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td>Total Price</td>
+       <td>@totalPrice</td>
+   </tr>
 
 </table>

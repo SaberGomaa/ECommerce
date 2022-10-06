@@ -9,8 +9,7 @@ namespace ECommerce.Models
         public int product_id { get; set; }
 
         public double subTotal { get; set; }
-        public int product_Quantity { get; set; }
-        public double product_price { get; set; }
+        public int Quantity { get; set; }
 
         public DateTime order_date { get; set; }
         public double order_total { get; set; }
