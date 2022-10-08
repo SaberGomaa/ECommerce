@@ -1,6 +1,6 @@
 ﻿@model ECommerce.Models.Product
 @{
-    ViewData["Title"] = "Buy Now !";
+    ViewData["Title"] = "Buy Now";
     Layout = "~/Views/Shared/_mainLayout.cshtml";
 }
 
@@ -9,9 +9,9 @@
 <h1 class="text-center">Buy Now !</h1>
 <hr />
 
-<div class="d-grid w-100 align-items-center">
+<div class="d-grid justify-content-center w-100" style="background-color : #eee; padding : 20px; ">
 
-<table class="table table-active table-striped table-dark w-50 text-center">
+<table class="table table-active table-striped table-dark text-center">
     <tr class="table-bordered">
         <td>Product Name </td>
         <td>@Model.Name</td>
@@ -26,10 +26,22 @@
     </tr>
 </table>
 
-<form method="post">
-  
-    <label></label>
+<form method="post" >
+    <div class="form-group">
+        <label class="control-label"> Number Of Units </label>
+        <input  class="form-control" type="number" min="1" max="@Model.Quantity" />
+    </div>
+    <div class="form-group">
+        <label class="control-label"> Size </label>
+        <select class="form-control" name="Size">
+            <option value="1" selected>Small</option>
+            <option value="2" >Medium</option>
+            <option value="3">Larg</option>
+            <option value="4">XL</option>
+        </select> 
 
+    </div>
+    <input type="submit" value="Buy" class="btn btn-info mt-2"/>
 </form>
 
 </div>
