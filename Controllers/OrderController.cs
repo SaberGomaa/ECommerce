@@ -42,7 +42,22 @@ namespace ECommerce.Controllers
         [HttpPost]
         public IActionResult OrderDetail(Order order)
         {
-            return RedirectToAction("view", "order");
+
+            int customerId = (int)HttpContext.Session.GetInt32("customerId");
+            if (customerId != null)
+            {
+                order.order_date = DateTime.Now;
+                order.order_total = order.subTotal * order.Quantity;
+                order.customer_id = customerId;
+
+                var x = order;
+
+                return RedirectToAction("view", "order");
+            }
+            else
+            {
+                return RedirectToAction("login", "customer");
+            }
         }
 
     }

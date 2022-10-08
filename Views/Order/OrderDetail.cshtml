@@ -11,7 +11,7 @@
 
 <div class="d-grid justify-content-center w-100" style="background-color : #eee; padding : 20px; ">
 
-<table class="table table-active table-striped table-dark text-center">
+<table class="d-grid justify-content-center w-100 table table-active table-striped table-dark text-center">
     <tr class="table-bordered">
         <td>Product Name </td>
         <td>@Model.Name</td>
@@ -49,6 +49,9 @@
         </select> 
 
     </div>
+    <input hidden name="subTotal" value="@Model.Price"/>
+    <input hidden name="product_id" value="@Model.Id"/>
+
     <input type="submit" value="Buy" class="btn btn-info mt-2"/>
 </form>
 
