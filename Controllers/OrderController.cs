@@ -32,9 +32,11 @@ namespace ECommerce.Controllers
             }
         }
 
-        public IActionResult OrderDetail()
+        public IActionResult OrderDetail(int Id)
         {
-            return View();
+            var product = context.products.Where(p=>p.Id==Id ).FirstOrDefault();
+
+            return View(product);
         }
 
         [HttpPost]
