@@ -1,4 +1,4 @@
-﻿
+﻿@model ECommerce.Models.Product
 @{
     ViewData["Title"] = "OrderDetail";
     Layout = "~/Views/Shared/_mainLayout.cshtml";
@@ -9,8 +9,22 @@
 <h1 class="text-center">Order Details</h1>
 <hr />
 
+<table class="table table-active ">
+    <tr>
+        <td>Product Name </td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <td>Available Quantity</td>
+        <td>@Model.Quantity</td>
+    </tr>
+    <tr>
+        <td>Unit Price </td>
+        <td>@Model.Price</td>
+    </tr>
+</table>
+
 <form method="post">
-    <div>
-    </div>
+  
 
 </form>
