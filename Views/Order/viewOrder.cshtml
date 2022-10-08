@@ -21,8 +21,9 @@
        <th>Order Id</th>
        <th>Product Name</th>
        <th>Product Price</th>
-       <th>Sub Total </th>
        <th>Quantity </th>
+       <th>Color </th>
+       <th>Size </th>
        <th>Total Price </th>
 
    </tr>
@@ -33,12 +34,14 @@
            <td>@i.Id</td>
            <td>@i.product.Name</td>
            <td>@i.product.Price</td>
-           <td>@i.subTotal</td>
            <td>@i.Quantity</td>
+           <td>@i.Color</td>
+           <td>@i.Size</td>
            <td class="table-dark">@i.order_total</td>
        </tr>
    }
    <tr class="table-borderless table-dark">
+       <td></td>
        <td></td>
        <td></td>
        <td></td>
