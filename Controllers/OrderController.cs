@@ -33,10 +33,18 @@ namespace ECommerce.Controllers
         }
 
         public IActionResult OrderDetail(int Id)
-        {   
-            var product = context.products.Where(p=>p.Id==Id ).FirstOrDefault();
+        {
+            int? customerId = HttpContext.Session.GetInt32("customerId");
+            if (customerId != null)
+            {
+                var product = context.products.Where(p => p.Id == Id).FirstOrDefault();
 
-            return View(product);
+                return View(product);
+            }
+            else
+            {
+                return RedirectToAction("login", "customer");
+            }
         }
 
         [HttpPost]
@@ -44,15 +52,17 @@ namespace ECommerce.Controllers
         {
 
             int customerId = (int)HttpContext.Session.GetInt32("customerId");
+
             if (customerId != null)
             {
                 order.order_date = DateTime.Now;
                 order.order_total = order.subTotal * order.Quantity;
                 order.customer_id = customerId;
 
-                var x = order;
+                context.orders.Add(order);
+                context.SaveChanges();
 
-                return RedirectToAction("view", "order");
+                return RedirectToAction("viewOrder", "order");
             }
             else
             {
