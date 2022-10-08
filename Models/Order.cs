@@ -11,9 +11,11 @@ namespace ECommerce.Models
         public double subTotal { get; set; }
         public int Quantity { get; set; }
 
+        public int Size { get; set; }
+        public string Color { get; set; }
+
         public DateTime order_date { get; set; }
         public double order_total { get; set; }
-
         public int customer_id { get; set; }
 
         [ForeignKey("customer_id")]
