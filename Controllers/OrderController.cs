@@ -50,7 +50,7 @@ namespace ECommerce.Controllers
         [HttpPost]
         public IActionResult OrderDetail(Order order)
         {
-
+            order.Id = 0;
             int customerId = (int)HttpContext.Session.GetInt32("customerId");
 
             if (customerId != null)
