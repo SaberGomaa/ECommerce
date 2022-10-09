@@ -38,36 +38,6 @@
             SaberGomaa@hotmail.com
         </p>
     </div>
-    <form method="post" class="col-sm-7">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input asp-for="Name" class="form-control" placeholder="Name" type="text">
-            <span asp-validation-for="Name" class="text-danger"></span>
-
-        </div>
-        <div class="col-sm-6 form-group">
-          <input asp-for="Email" class="form-control"  placeholder="Email" >
-           <span asp-validation-for="Email" class="text-danger"></span>
-
-      </div>
-      </div>
-      <div class="mt-5">
-          <label>Choose problem</label>
-          <select asp-for="choose" class="browser-default custom-select mb-4 form-control">
-                <option value="" disabled>Choose option</option>
-                <option value="1" selected>Feedback</option>
-                <option value="2">Report a bug</option>
-                <option value="3">Feature request</option>
-                <option value="4">other</option>
-            </select>
-      </div>
-      <textarea asp-for="Message" class="mt-5 form-control" placeholder="Comment" rows="5"></textarea><br>
-      <span asp-validation-for="Message" class="text-danger"></span>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <input class="btn btn-default pull-right btn btn-dark" type="submit" value="Send"/>
-      </div>
-      </div>
-    </form>
+    
   </div>
 </div>
