@@ -5,15 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Controllers
 {
-
-
     public class OrderController : Controller
     {  
       
         public myDbContext context = new myDbContext();
         public IActionResult Index()
         {
-
             return View();
         }
 
